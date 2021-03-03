@@ -2,6 +2,9 @@
 
 {% block main %}
 <h1 class="page-header">Secure Page</h1>
+	{% include 'flash_messages.html' %}
 <br/>
-<p>This page is absolutely secure!</p>
+<div class="alert">
+	Hello {{ current_user.username }}!This page is absolutely secure! It should only be accessible if you are logged in.
+</div>
 {% endblock %}

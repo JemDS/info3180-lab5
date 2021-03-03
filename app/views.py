@@ -30,6 +30,9 @@ def about():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+   # if current_user.is_authenticated:
+    #    return redirect(url_for('secure_page'))
+
     form = LoginForm()
     if request.method == "POST" and form.validate_on_submit():
         # change this to actually validate the entire form submission
@@ -52,15 +55,27 @@ def login():
                 if 'remember_me' in request.form:
                     remember_me = True
 
-            # get user id, load into session
-            login_user(user , remember=remember_me)
+                # get user id, load into session
+                login_user(user , remember=remember_me)
 
-            # remember to flash a message to the user
-            flash('Login Successful!', 'success')
+                # remember to flash a message to the user
+                flash('Login Successful!', 'success')
 
-            return redirect(url_for("secure-page"))  # they should be redirected to a secure-page route instead
-    return render_template("secure_page.html", form=form)
+                return redirect(url_for("secure-page"))  # they should be redirected to a secure-page route instead
+            
+            else:
+                flash('Username or Password is incorrect!','danger')
+    
+    return render_template("login.html", form=form)
 
+@app.route('/logout')
+def logout_user():
+
+    logout_user()
+    
+    flash("You've been logged out successful!", 'success')
+
+    return redirect(url_for('home'))
 
 # user_loader callback. This callback is used to reload the user object from
 # the user ID stored in the session
@@ -68,7 +83,7 @@ def login():
 def load_user(id):
     return UserProfile.query.get(int(id))
 
-@app.route('/<secure-page')
+@app.route('/secure-page')
 @login_required
 def secure_page():
     return render_template('secure_page.html')

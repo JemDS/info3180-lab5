@@ -1,3 +1,23 @@
 body {
     padding-top: 5rem;
 }
+
+p{
+	font-size: 25px;
+}
+.secure-box{
+	background: #3399FF;
+}
+
+.secure-box h2{
+	font-size: 20px;
+	text-align: center;
+
+}
+
+ul{
+	list-style-type: none;
+	background: #CCE5FF;
+	text-align: left;
+	font-size: 16px;
+}

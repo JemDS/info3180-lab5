@@ -3,8 +3,23 @@
 {% block main %}
 <h1 class="page-header">Secure Page</h1>
 	{% include 'flash_messages.html' %}
-<br/>
-<div class="alert">
-	Hello {{ current_user.username }}!This page is absolutely secure! It should only be accessible if you are logged in.
+<hr>
+<p class="secure">Welcome {{current_user.username }}!</p>
+
+<br>
+
+
+<div class="secure-box">
+	<h2>Account Information</h2>
+		<ul class="secure-list">
+			<li>AUD: A$100</li>
+			<li>CAD: C$1000</li>
+			<li>EUR: €10,000</li>
+			<li>GBP: £100,000</li>
+			<li>USD: $1,000,000</li>
+			<li>JPY: ¥10,000,000</li>
+			<li>YUAN: ¥100,000,000</li>
+			<li>Bit Coins: ₿1,000,000,000</li>
+		</ul>
 </div>
 {% endblock %}
